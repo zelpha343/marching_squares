@@ -1,0 +1,4 @@
+#!/bin/bash
+
+clang -L/opt/homebrew/lib -I/opt/homebrew/include -lraylib -o out main.c
+
