@@ -44,6 +44,8 @@ void collide(Vector2 ballPosition, Vector2 *Velocity) {
 	if (ballPosition.x > screenWidth) {
 		Velocity->x = -Velocity->x;
 	}
+	if(ballPosition.x < 0) { 
+		Velocity->x = -Velocity->x;		
+	}
 }
-
 
