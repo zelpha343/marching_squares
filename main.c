@@ -13,7 +13,7 @@
 typedef struct {
 	Vector2 Position;
 	Vector2 Velocity;
-	float Radius;
+	int Radius;
 } Ball;
 
 void collision(Ball *ball);
@@ -25,14 +25,15 @@ int main(void) {
 
 	SetTargetFPS(FPS);
 	
-	const int numberOfBalls = 10;
-	Ball *balls = malloc(10* sizeof(Ball));
+	const int numberOfBalls = 50;
+	Ball *balls = malloc(numberOfBalls* sizeof(Ball));
 	for(size_t i = 0; i < numberOfBalls; i++) {
-		balls[i].Position.x = RANDOM(0, screenWidth);
-	    balls[i].Position.y = RANDOM(0, screenHeight);
-		balls[i].Velocity.x = RANDOM(10, 100);
-		balls[i].Velocity.y = RANDOM(10, 100);
-		balls[i].Radius = RANDOM(20, 50);
+			
+		balls[i].Radius = RANDOM(5, 30);
+		balls[i].Position.x = RANDOM(balls[i].Radius, screenWidth-balls[i].Radius);
+	    balls[i].Position.y = RANDOM(balls[i].Radius, screenHeight-balls[i].Radius);
+		balls[i].Velocity.x = RANDOM(10, 200);
+		balls[i].Velocity.y = RANDOM(10, 200);
 	}
 	
 	while(!WindowShouldClose()) {
